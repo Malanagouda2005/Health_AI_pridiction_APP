@@ -72,7 +72,7 @@ logger.info("📦 Loading ML Models...")
 # ✅ Skin Disease Model - Try best_skin_model.h5 first, fallback to skin_model.h5
 def load_skin_model():
     if tf is None:
-        logger.error(f"✗ TensorFlow unavailable: {tf_import_error}")
+        logger.warning(f"⚠️ TensorFlow unavailable: {tf_import_error}")
         return None
 
     # Try different model paths
@@ -107,7 +107,7 @@ skin_class_names = [
 # ✅ X-Ray Model - Try best_model.h5 first, fallback to xray_model.h5
 def load_xray_model():
     if tf is None:
-        logger.error(f"✗ TensorFlow unavailable: {tf_import_error}")
+        logger.warning(f"⚠️ TensorFlow unavailable: {tf_import_error}")
         return None
 
     # Try different model paths
@@ -200,19 +200,25 @@ def log_request():
 @app.route('/')
 def home():
     """Health AI API Home"""
+    endpoints = {
+        "symptom_prediction": "POST /api/predict/symptoms",
+        "disease_info": "GET /api/disease/<name>",
+        "models_status": "GET /api/status",
+        "login": "POST /auth/login",
+        "register": "POST /users"
+    }
+
+    if skin_model is not None:
+        endpoints["skin_prediction"] = "POST /api/predict/skin"
+    if xray_model is not None:
+        endpoints["xray_prediction"] = "POST /api/predict/xray"
+
     return jsonify({
         "message": "🏥 Health AI Prediction System",
         "version": "2.0",
         "status": "running",
-        "endpoints": {
-            "symptom_prediction": "POST /api/predict/symptoms",
-            "skin_prediction": "POST /api/predict/skin",
-            "xray_prediction": "POST /api/predict/xray",
-            "disease_info": "GET /api/disease/<name>",
-            "models_status": "GET /api/status",
-            "login": "POST /auth/login",
-            "register": "POST /users"
-        }
+        "tensorflow_available": tf is not None,
+        "endpoints": endpoints
     }), 200
 
 @app.route('/api/predict/symptoms', methods=['POST'])
@@ -556,14 +562,6 @@ def predict_xray():
         }), 200
     
     except Exception as e:
-        logger.error(f"Image processing error: {str(e)}")
-        return jsonify({
-            "status": "error",
-            "error": "Image processing failed",
-            "message": str(e)
-        }), 400
-
-    except Exception as e:
         logger.error(f"X-ray prediction error: {str(e)}")
         return jsonify({
             "status": "error",
@@ -592,6 +590,7 @@ def model_status():
     """Get status of all models"""
     return jsonify({
         "status": "success",
+        "tensorflow_installed": tf is not None,
         "models": {
             "skin_disease_model": {
                 "loaded": skin_model is not None,
