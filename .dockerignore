@@ -1,15 +1,101 @@
+# Git
 .git
 .gitignore
+.gitattributes
+
+# Environment & Config
+.env
+.env.local
+.env.*.local
 .vercel
-node_modules
+.vercelignore
+
+# Python
 __pycache__
 *.pyc
 *.pyo
+*.pyd
+*.so
+*.egg
 *.egg-info/
+.Python
 .pytest_cache/
+.tox/
+.coverage
+htmlcov/
+build/
+dist/
+.mypy_cache/
+.dmypy.json
+
+# Virtual Environments
 .venv
 venv
-.DS_Store
-*.md
+ENV
+env
+env.bak/
+venv.bak/
+
+# Node/Frontend
+node_modules
+npm-debug.log*
+yarn-error.log*
+.npm
+package-lock.json
+yarn.lock
+
+# IDE & Editors
 .vscode
 .idea
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Documentation
+*.md
+README*
+LICENSE
+CHANGELOG*
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.AppleDouble
+.LSOverride
+._*
+
+# Testing & Logs
+*.log
+logs/
+test_results/
+coverage/
+
+# Temporary Files
+*.tmp
+*.temp
+.~*
+*.bak
+
+# Build artifacts
+build/
+dist/
+*.whl
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+instance/
+
+# Misc
+.vscode-server
+Dockerfile.dev
+docker-compose.dev.yml
+docker-compose.override.yml
