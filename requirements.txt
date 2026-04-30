@@ -3,11 +3,10 @@ Flask-CORS==4.0.0
 Flask-SQLAlchemy==3.0.5
 PyJWT==2.8.0
 Werkzeug==3.0.0
-# tflite-runtime cannot be installed on Vercel's Python environment
-# Remove this if you switch to a different host or add a supported runtime
+tensorflow==2.21.0
 numpy<2.0
 pandas==2.2.0
-scikit-learn==1.3.0
+scikit-learn==1.4.0
 joblib==1.3.2
 Pillow==10.0.0
 pymongo==4.6.0
