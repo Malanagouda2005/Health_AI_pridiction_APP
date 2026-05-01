@@ -18,6 +18,7 @@ EXPOSE 5000
 # Set environment variables
 ENV FLASK_APP=app.py
 ENV PYTHONUNBUFFERED=1
+ENV PORT=5000
 
-# Run the Flask app
-CMD ["python", "app.py"]
+# Run the Flask app with Gunicorn for production
+CMD gunicorn --bind 0.0.0.0:$PORT app:app
