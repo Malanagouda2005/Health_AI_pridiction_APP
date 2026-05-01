@@ -98,13 +98,7 @@ npm start
 
 ---
 
-## 👥 Collaboration
 
-Contributors can:
-
-* Fork the repository
-* Create a new branch
-* Submit a pull request
 
 ---
 
