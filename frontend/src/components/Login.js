@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
-import getApiBaseUrl, { isAndroidPlatform, API_OVERRIDE_STORAGE_KEY } from '../apiConfig';
+import getApiBaseUrl, { API_OVERRIDE_STORAGE_KEY } from '../apiConfig';
 
 const Login = ({ onLogin }) => {
   const [mode, setMode] = useState('login');

@@ -13,8 +13,12 @@ export const isCapacitorWebView = () => {
 };
 
 const getApiBaseUrl = () => {
-  if (process.env.REACT_APP_API_URL) return process.env.REACT_APP_API_URL;
+  // 1. Build-time environment variable (highest priority)
+  if (process.env.REACT_APP_API_URL && process.env.REACT_APP_API_URL !== 'http://10.0.2.2:5000') {
+    return process.env.REACT_APP_API_URL;
+  }
 
+  // 2. Runtime override from localStorage
   const storedOverride = typeof window !== 'undefined' ? localStorage.getItem(API_OVERRIDE_STORAGE_KEY) : null;
   if (storedOverride) return storedOverride;
 
@@ -23,13 +27,20 @@ const getApiBaseUrl = () => {
   const hostname = window.location.hostname;
   const isAndroid = isAndroidPlatform();
 
+  // 3. Production: deployed on Vercel or any non-local host
+  if (hostname !== 'localhost' && hostname !== '127.0.0.1' && !hostname.startsWith('10.') && !hostname.startsWith('192.168.')) {
+    return 'https://backend-intership-health-risk-predication.onrender.com';
+  }
+
+  // 4. Android emulator
   if (hostname === '10.0.2.2') return 'http://10.0.2.2:5000';
 
+  // 5. Android device on local network
   if (isAndroid) {
-    // Setting your provided backend IP as the default for Android
     return 'http://10.75.149.30:5000';
   }
 
+  // 6. Default local development
   return 'http://localhost:5000';
 };
 
