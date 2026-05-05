@@ -48,17 +48,6 @@ const Login = ({ onLogin }) => {
     };
   }, [apiBase]);
 
-  const handleUpdateApi = () => {
-    const newApi = prompt('Enter Backend URL (e.g. http://192.168.1.5:5000):', apiBase);
-    if (newApi && newApi.startsWith('http')) {
-      localStorage.setItem(API_OVERRIDE_STORAGE_KEY, newApi);
-      setApiBase(newApi);
-      setError('');
-    } else if (newApi) {
-      alert('URL must start with http:// or https://');
-    }
-  };
-
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -165,7 +154,6 @@ const Login = ({ onLogin }) => {
         <div className="status-indicator">
           <div className={`status-dot ${backendStatus}`}></div>
           <span>Backend: {backendStatus === 'connected' ? 'Online' : backendStatus === 'checking' ? 'Connecting...' : 'Offline'}</span>
-          <button onClick={handleUpdateApi} className="change-btn">Change Server</button>
         </div>
       </div>
     </div>

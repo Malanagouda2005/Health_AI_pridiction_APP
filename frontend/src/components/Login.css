@@ -727,3 +727,8 @@
     padding-top: 20px;
   }
 }
+
+.auth-form input {
+  border-radius: 12px;
+  padding: 12px;
+}

@@ -29,7 +29,7 @@ const getApiBaseUrl = () => {
 
   // 3. Production: deployed on Vercel or any non-local host
   if (hostname !== 'localhost' && hostname !== '127.0.0.1' && !hostname.startsWith('10.') && !hostname.startsWith('192.168.')) {
-    return 'https://backend-intership-health-risk-predication.onrender.com';
+    return 'https://health-ai-backend-n2t9.onrender.com';
   }
 
   // 4. Android emulator
