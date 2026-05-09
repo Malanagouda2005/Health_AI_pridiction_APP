@@ -78,3 +78,4 @@ def get_user_from_token():
         return None
     
     return User.query.get(user_id)
+    ####
