@@ -1,6 +1,7 @@
 # Comprehensive Disease Database with Risk Levels, Treatments, and Recommendations
 DISEASE_DATABASE = {
     # SKIN DISEASES (22 types)
+    #USE FOR ONLY AS DATA SETS 
     'Acne': {
         'risk_level': 'Low',
         'description': 'Common skin condition with pimples, blackheads, and whiteheads',
