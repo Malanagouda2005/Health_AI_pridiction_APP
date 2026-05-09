@@ -20,6 +20,7 @@ def init_database():
         try:
             # Drop existing tables (optional, comment out to preserve data)
             # db.drop_all()
+            #####
             
             # Create all tables
             db.create_all()
