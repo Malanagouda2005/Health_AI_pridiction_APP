@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# ==================== DATABASE CONFIGURATION ====================
+# ==================== DATABASE CONFIGURATION ======================
 # Configure SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
     'DATABASE_URL', 
