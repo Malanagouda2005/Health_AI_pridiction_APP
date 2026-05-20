@@ -133,6 +133,7 @@ Response:
 ```
 
 #### Login
+##
 ```
 POST /api/auth/login
 Content-Type: application/json
