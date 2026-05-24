@@ -10,8 +10,9 @@
 .vercel
 .vercelignore
 ####Ah
+#
 
-# Python
+# Python config
 __pycache__
 *.pyc
 *.pyo
