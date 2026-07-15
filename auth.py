@@ -6,7 +6,7 @@ import jwt
 import os
 from models import db, User, Session
 
-# Secret key for JWT tokens
+# Secret key for JWT tokens,,
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-change-this-in-production')
 
 def generate_token(user_id, expires_in=24):
