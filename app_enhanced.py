@@ -18,7 +18,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import uuid
 
-# Import disease database...
+# Import disease database.....
 try:
     from disease_database import (
         get_disease_info, get_risk_level, get_treatment_suggestions,
