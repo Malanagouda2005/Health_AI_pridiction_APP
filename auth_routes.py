@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/api/auth')
 
-# ==================== AUTHENTICATION ENDPOINTS ====================
+# ==================== AUTHENTICATION ENDPOINTS ====================@
 ####
 
 @auth_bp.route('/register', methods=['POST'])
