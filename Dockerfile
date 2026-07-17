@@ -12,6 +12,7 @@ COPY . .
 
 # Create instance directory for SQLite
 RUN mkdir -p instance
+nan
 
 # Expose port
 EXPOSE 5000
