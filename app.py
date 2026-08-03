@@ -159,7 +159,7 @@ else:
 
 logger.info("✓ All models loaded!\n")
 
-# ==================== HELPER FUNCTIONS ====================
+# ==================== HELPER FUNCTIONS ===================
 
 def get_disease_recommendations(disease_name):
     """Get comprehensive disease info"""
